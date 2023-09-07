@@ -1,7 +1,6 @@
 options:
   parameters:
     author: radiogis_director
-    catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
@@ -23,6 +22,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: Not titled yet
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -41,7 +41,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [309, 14]
+    coordinate: [176, 12.0]
     rotation: 0
     state: enabled
 - name: Rb
@@ -53,7 +53,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [405, 11]
+    coordinate: [272, 12.0]
     rotation: 0
     state: enabled
 - name: Sps
@@ -65,19 +65,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [684, 10]
+    coordinate: [552, 12.0]
     rotation: 0
     state: enabled
 - name: h
   id: variable
   parameters:
     comment: ''
-    value: np.array([1,1,1,1])
+    value: np.array([1,1,1,1,1,1,1,1])
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [499, 10]
+    coordinate: [352, 12.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -89,7 +89,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [778, 14]
+    coordinate: [656, 12.0]
     rotation: 0
     state: enabled
 - name: Menu
@@ -197,7 +197,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [419, 131]
+    coordinate: [496, 144.0]
     rotation: 0
     state: enabled
 - name: blocks_char_to_float_0
@@ -214,7 +214,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [146, 172]
+    coordinate: [192, 196.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_mag_squared_0
@@ -230,7 +230,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [578, 644]
+    coordinate: [576, 692.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -248,7 +248,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [479, 143]
+    coordinate: [520, 244.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_1
@@ -266,7 +266,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [869, 639]
+    coordinate: [832, 692.0]
     rotation: 0
     state: true
 - name: blocks_null_sink_0
@@ -320,7 +320,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [851, 175]
+    coordinate: [896, 140.0]
     rotation: 0
     state: true
 - name: epy_block_0
@@ -347,7 +347,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [729, 646]
+    coordinate: [704, 604.0]
     rotation: 0
     state: true
 - name: fft_vxx_0
@@ -368,7 +368,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [377, 610]
+    coordinate: [408, 580.0]
     rotation: 0
     state: true
 - name: import_0
@@ -381,7 +381,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [865, 15]
+    coordinate: [784, 12.0]
     rotation: 0
     state: true
 - name: interp_fir_filter_xxx_0
@@ -468,7 +468,6 @@ blocks:
     minoutbuf: '0'
     name: '""'
     nconnections: '1'
-    norm_window: 'False'
     showports: 'False'
     tr_chan: '0'
     tr_level: '0.0'
@@ -487,7 +486,7 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    wintype: window.WIN_BLACKMAN_hARRIS
+    wintype: firdes.WIN_BLACKMAN_hARRIS
     ymax: '10'
     ymin: '-140'
   states:
@@ -591,7 +590,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [385, 490]
+    coordinate: [304, 492.0]
     rotation: 0
     state: true
 - name: qtgui_vector_sink_f_0
@@ -664,7 +663,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1069, 584]
+    coordinate: [1160, 620.0]
     rotation: 0
     state: true
 - name: virtual_sink_0_1
@@ -677,7 +676,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [237, 245]
+    coordinate: [316.0, 280]
     rotation: 270
     state: true
 - name: virtual_sink_0_1_0
@@ -690,8 +689,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 261]
-    rotation: 270
+    coordinate: [1104, 204.0]
+    rotation: 0
     state: enabled
 - name: virtual_sink_0_1_0_0
   id: virtual_sink
@@ -703,8 +702,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [951, 332]
-    rotation: 270
+    coordinate: [1112, 276.0]
+    rotation: 0
     state: enabled
 - name: virtual_source_0
   id: virtual_source
