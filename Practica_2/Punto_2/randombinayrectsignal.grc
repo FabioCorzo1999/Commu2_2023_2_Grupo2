@@ -72,7 +72,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: np.array([1,1,1,1,1,1,1,1])
+    value: np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
   states:
     bus_sink: false
     bus_source: false
