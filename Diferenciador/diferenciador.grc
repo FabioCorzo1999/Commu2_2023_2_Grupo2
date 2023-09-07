@@ -61,7 +61,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 280.0]
+    coordinate: [344, 328.0]
     rotation: 0
     state: true
 - name: blocks_vector_source_x_0
@@ -75,13 +75,13 @@ blocks:
     repeat: 'True'
     tags: '[]'
     type: float
-    vector: (1, 2, 3)
+    vector: (3,7,11,14,18,22)
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [112, 272.0]
+    coordinate: [112, 312.0]
     rotation: 0
     state: true
 - name: epy_block_0
@@ -111,7 +111,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [528, 232.0]
+    coordinate: [568, 280.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -208,7 +208,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [784, 304.0]
+    coordinate: [784, 296.0]
     rotation: 0
     state: true
 
