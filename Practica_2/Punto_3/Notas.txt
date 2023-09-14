@@ -1,0 +1,17 @@
+UN BIT
+
+4 BITS
+Punto 2:
+ 
+
+8bits 
+
+16 BITS
+Punto 2:
+Podemos Observar que en la PSD nos da una potencia bastante pequeña pero observamos que la potencia en DB del espectro
+en frecuencia que oscila entre los -40 y 80 dbs
+Punto 3:
+Al observar las señales podemos notar que la señal de la PSD no capta nada ya que todo es ruido y al observar la señal 
+queda totalmente ireconocible ya que la domina el ruido, para lo mismo en la frecuencia ya que notamos que solo se 
+observa el ruido esto debido a que posiblemte la señal es muy pequeña y solo notamos el ruido blanco.
+ 
