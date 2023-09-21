@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: np.array([1,1,1,1])
+    value: np.array([1,1,0,0,1,1,1,1])
   states:
     bus_sink: false
     bus_source: false
@@ -133,7 +133,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: -1./2.
+    const: -1/2.
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -240,7 +240,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '2.'
+    const: '2'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -679,8 +679,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [316.0, 280]
-    rotation: 270
+    coordinate: [352, 252.0]
+    rotation: 0
     state: true
 - name: virtual_sink_0_1_0
   id: virtual_sink

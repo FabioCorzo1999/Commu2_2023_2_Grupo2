@@ -80,7 +80,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.h = h = np.array([1,1,1,1])
+        self.h = h = np.array([1,1,0,0,1,1,1,1])
         self.Sps = Sps = len(h)
         self.Rb = Rb = 32000
         self.samp_rate = samp_rate = Rb*Sps
@@ -252,13 +252,13 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_float*1, N)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff([1/(N*samp_rate)]*N)
-        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(2.)
+        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(2)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(N)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 1000000))), True)
         self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, 1, 76)
-        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (-1./2.))
+        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (-1/2.))
 
 
         ##################################################
