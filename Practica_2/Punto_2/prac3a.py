@@ -7,9 +7,9 @@
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
 # Author: radiogis_director
-# GNU Radio version: v3.8.5.0-6-g57bd109d
+# GNU Radio version: 3.10.5.1
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -37,15 +37,17 @@ import signal
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
-import epy_block_0
 import numpy as np
+import prac3a_epy_block_0 as epy_block_0  # embedded python block
+
+
 
 from gnuradio import qtgui
 
 class prac3a(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet")
+        gr.top_block.__init__(self, "Not titled yet", catch_exceptions=True)
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Not titled yet")
         qtgui.util.check_set_qss()
@@ -78,7 +80,11 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+<<<<<<< HEAD
         self.h = h = np.array([1,1,1,1])
+=======
+        self.h = h = np.array([1,1,0,0,1,1,1,1])
+>>>>>>> f83259ab681e9d5b261dcd650b6baad11dcf1ca3
         self.Sps = Sps = len(h)
         self.Rb = Rb = 32000
         self.samp_rate = samp_rate = Rb*Sps
@@ -87,6 +93,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self.Menu = Qt.QTabWidget()
         self.Menu_widget_0 = Qt.QWidget()
         self.Menu_layout_0 = Qt.QBoxLayout(Qt.QBoxLayout.TopToBottom, self.Menu_widget_0)
@@ -101,20 +108,27 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self.Menu)
         self.qtgui_vector_sink_f_0 = qtgui.vector_sink_f(
             N,
+<<<<<<< HEAD
             0,
             samp_rate/N,
+=======
+            (-samp_rate/2),
+            (samp_rate/N),
+>>>>>>> f83259ab681e9d5b261dcd650b6baad11dcf1ca3
             "f",
             "Sx(f)",
             "PSD (Watts/Hz)",
-            1 # Number of inputs
+            1, # Number of inputs
+            None # parent
         )
         self.qtgui_vector_sink_f_0.set_update_time(0.10)
-        self.qtgui_vector_sink_f_0.set_y_axis(0, 1/Rb)
+        self.qtgui_vector_sink_f_0.set_y_axis(0, (1/Rb))
         self.qtgui_vector_sink_f_0.enable_autoscale(False)
         self.qtgui_vector_sink_f_0.enable_grid(False)
         self.qtgui_vector_sink_f_0.set_x_axis_units("Hz")
         self.qtgui_vector_sink_f_0.set_y_axis_units("Watss/Hz")
         self.qtgui_vector_sink_f_0.set_ref_level(0)
+
 
         labels = ['p4', '', '', '', '',
             '', '', '', '', '']
@@ -134,17 +148,18 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.qtgui_vector_sink_f_0.set_line_color(i, colors[i])
             self.qtgui_vector_sink_f_0.set_line_alpha(i, alphas[i])
 
-        self._qtgui_vector_sink_f_0_win = sip.wrapinstance(self.qtgui_vector_sink_f_0.pyqwidget(), Qt.QWidget)
+        self._qtgui_vector_sink_f_0_win = sip.wrapinstance(self.qtgui_vector_sink_f_0.qwidget(), Qt.QWidget)
         self.Menu_grid_layout_0.addWidget(self._qtgui_vector_sink_f_0_win, 3, 0, 1, 1)
         for r in range(3, 4):
             self.Menu_grid_layout_0.setRowStretch(r, 1)
         for c in range(0, 1):
             self.Menu_grid_layout_0.setColumnStretch(c, 1)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
-            16*Sps, #size
+            (16*Sps), #size
             samp_rate, #samp_rate
             "", #name
-            1 #number of inputs
+            1, #number of inputs
+            None # parent
         )
         self.qtgui_time_sink_x_0.set_update_time(0.10)
         self.qtgui_time_sink_x_0.set_y_axis(-1.50, 1.50)
@@ -185,7 +200,7 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0.set_line_marker(i, markers[i])
             self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
 
-        self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
+        self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.qwidget(), Qt.QWidget)
         self.Menu_grid_layout_0.addWidget(self._qtgui_time_sink_x_0_win, 2, 0, 1, 1)
         for r in range(2, 3):
             self.Menu_grid_layout_0.setRowStretch(r, 1)
@@ -193,14 +208,15 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.Menu_grid_layout_0.setColumnStretch(c, 1)
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_f(
             N, #size
-            firdes.WIN_BLACKMAN_hARRIS, #wintype
+            window.WIN_BLACKMAN_hARRIS, #wintype
             0, #fc
             samp_rate, #bw
             "", #name
-            1
+            1,
+            None # parent
         )
         self.qtgui_freq_sink_x_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0.enable_autoscale(False)
@@ -208,6 +224,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0.set_fft_average(1.0)
         self.qtgui_freq_sink_x_0.enable_axis_labels(True)
         self.qtgui_freq_sink_x_0.enable_control_panel(False)
+        self.qtgui_freq_sink_x_0.set_fft_window_normalized(False)
 
 
         self.qtgui_freq_sink_x_0.set_plot_pos_half(not True)
@@ -230,7 +247,7 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.qtgui_freq_sink_x_0.set_line_color(i, colors[i])
             self.qtgui_freq_sink_x_0.set_line_alpha(i, alphas[i])
 
-        self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.pyqwidget(), Qt.QWidget)
+        self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.qwidget(), Qt.QWidget)
         self.Menu_grid_layout_1.addWidget(self._qtgui_freq_sink_x_0_win, 3, 0, 1, 1)
         for r in range(3, 4):
             self.Menu_grid_layout_1.setRowStretch(r, 1)
@@ -238,19 +255,23 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.Menu_grid_layout_1.setColumnStretch(c, 1)
         self.interp_fir_filter_xxx_0 = filter.interp_fir_filter_fff(Sps, h)
         self.interp_fir_filter_xxx_0.declare_sample_delay(0)
+<<<<<<< HEAD
         self.fft_vxx_0 = fft.fft_vfc(1024, True, [1]*N, 1)
+=======
+        self.fft_vxx_0 = fft.fft_vfc(N, True, [1]*N, True, 1)
+>>>>>>> f83259ab681e9d5b261dcd650b6baad11dcf1ca3
         self.epy_block_0 = epy_block_0.blk(N=N)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_float*1, N)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff([1/(N*samp_rate)]*N)
-        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(2.)
+        self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(2)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(N)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 1000000))), True)
         self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, 1, 76)
-        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, -1./2.)
+        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (-1/2.))
 
 
         ##################################################
@@ -276,6 +297,9 @@ class prac3a(gr.top_block, Qt.QWidget):
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "prac3a")
         self.settings.setValue("geometry", self.saveGeometry())
+        self.stop()
+        self.wait()
+
         event.accept()
 
     def get_h(self):
@@ -299,7 +323,7 @@ class prac3a(gr.top_block, Qt.QWidget):
     def set_Rb(self, Rb):
         self.Rb = Rb
         self.set_samp_rate(self.Rb*self.Sps)
-        self.qtgui_vector_sink_f_0.set_y_axis(0, 1/self.Rb)
+        self.qtgui_vector_sink_f_0.set_y_axis(0, (1/self.Rb))
 
     def get_samp_rate(self):
         return self.samp_rate
@@ -310,7 +334,11 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
+<<<<<<< HEAD
         self.qtgui_vector_sink_f_0.set_x_axis(0, self.samp_rate/self.N)
+=======
+        self.qtgui_vector_sink_f_0.set_x_axis((-self.samp_rate/2), (self.samp_rate/self.N))
+>>>>>>> f83259ab681e9d5b261dcd650b6baad11dcf1ca3
 
     def get_N(self):
         return self.N
@@ -319,8 +347,12 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.N = N
         self.blocks_multiply_const_vxx_1.set_k([1/(self.N*self.samp_rate)]*self.N)
         self.epy_block_0.N = self.N
+<<<<<<< HEAD
         self.qtgui_vector_sink_f_0.set_x_axis(0, self.samp_rate/self.N)
 
+=======
+        self.qtgui_vector_sink_f_0.set_x_axis((-self.samp_rate/2), (self.samp_rate/self.N))
+>>>>>>> f83259ab681e9d5b261dcd650b6baad11dcf1ca3
 
 
 
@@ -339,6 +371,9 @@ def main(top_block_cls=prac3a, options=None):
     tb.show()
 
     def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+
         Qt.QApplication.quit()
 
     signal.signal(signal.SIGINT, sig_handler)
@@ -348,11 +383,6 @@ def main(top_block_cls=prac3a, options=None):
     timer.start(500)
     timer.timeout.connect(lambda: None)
 
-    def quitting():
-        tb.stop()
-        tb.wait()
-
-    qapp.aboutToQuit.connect(quitting)
     qapp.exec_()
 
 if __name__ == '__main__':
