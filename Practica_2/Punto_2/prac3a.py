@@ -78,7 +78,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.h = h = np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.h = h = np.array([1,1,1,1])
         self.Sps = Sps = len(h)
         self.Rb = Rb = 32000
         self.samp_rate = samp_rate = Rb*Sps
@@ -101,7 +101,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.top_layout.addWidget(self.Menu)
         self.qtgui_vector_sink_f_0 = qtgui.vector_sink_f(
             N,
-            -samp_rate/2,
+            0,
             samp_rate/N,
             "f",
             "Sx(f)",
@@ -238,7 +238,7 @@ class prac3a(gr.top_block, Qt.QWidget):
             self.Menu_grid_layout_1.setColumnStretch(c, 1)
         self.interp_fir_filter_xxx_0 = filter.interp_fir_filter_fff(Sps, h)
         self.interp_fir_filter_xxx_0.declare_sample_delay(0)
-        self.fft_vxx_0 = fft.fft_vfc(N, True, [1]*N, 1)
+        self.fft_vxx_0 = fft.fft_vfc(1024, True, [1]*N, 1)
         self.epy_block_0 = epy_block_0.blk(N=N)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_float*1, N)
@@ -310,7 +310,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
-        self.qtgui_vector_sink_f_0.set_x_axis(-self.samp_rate/2, self.samp_rate/self.N)
+        self.qtgui_vector_sink_f_0.set_x_axis(0, self.samp_rate/self.N)
 
     def get_N(self):
         return self.N
@@ -319,7 +319,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.N = N
         self.blocks_multiply_const_vxx_1.set_k([1/(self.N*self.samp_rate)]*self.N)
         self.epy_block_0.N = self.N
-        self.qtgui_vector_sink_f_0.set_x_axis(-self.samp_rate/2, self.samp_rate/self.N)
+        self.qtgui_vector_sink_f_0.set_x_axis(0, self.samp_rate/self.N)
 
 
 
