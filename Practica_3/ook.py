@@ -489,7 +489,7 @@ class ook(gr.top_block, Qt.QWidget):
         self.epy_block_0 = epy_block_0.blk(fc=fc, samp_rate=samp_rate)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 1000000))), True)
-        self.analog_const_source_x_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 0)
+        self.analog_const_source_x_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (np.pi/3))
 
 
         ##################################################

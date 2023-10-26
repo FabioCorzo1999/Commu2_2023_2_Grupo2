@@ -163,7 +163,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '0'
+    const: np.pi/3
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -288,15 +288,26 @@ blocks:
   parameters:
     _source_code: "import numpy as np\nfrom gnuradio import gr\nimport math\n\nclass\
       \ blk(gr.sync_block):  \n    \"\"\"This block is a RF VCO and works as following:\
-      \ \u2026..\"\"\"\n\n    def __init__(self, fc=128000, samp_rate=320000):  \n\
-      \        gr.sync_block.__init__(\n            self,\n            name='e_RF_VCO_ff',\
-      \   \n            in_sig=[np.float32, np.float32],\n            out_sig=[np.float32]\n\
-      \        )\n        self.fc = fc\n        self.samp_rate = samp_rate\n     \
-      \   self.n_m=0\n\n    def work(self, input_items, output_items):\n        A=input_items[0]\n\
-      \        Q=input_items[1]\n        y=output_items[0]\n        N=len(A)\n   \
-      \     n=np.linspace(self.n_m,self.n_m+N-1,N)\n        self.n_m += N\n      \
-      \  y[:]=A*np.cos(2*math.pi*self.fc*n/self.samp_rate+Q)\n        return len(output_items[0])\n\
-      \n\n"
+      \ \u2026..\"\"\"\n    \"\"\" En este bloque manejamos una se\xF1al modulada\
+      \ para convertirla en un ase\xF1al RF\n        Donde a partir de una se\xF1\
+      al y una constante se puede hacer esta, la se\xF1al que es un se\xF1al modulada\
+      \ \n        y la contante que me va representar el desfase que queremos que\
+      \ tenga la se\xF1al RF.\n\n        La variable A es la se\xF1al de entrada (se\xF1\
+      al modulda )\n        Q que es mi contante que significara el desfase de una\
+      \ se\xF1al RF \n        N es la constante que me dira el rango nuestra se\xF1\
+      al modulada teniendo en cuenta que esta vive aumentando \n\n        n es el\
+      \ vector de teneindo en cuenta que inicia en 0 y termina en N-1 con un numero\
+      \ de muestras de N\n        y el numero de muestras va aumentando a medida que\
+      \ aumenta N\n        una vez esto me retorna el vector de referencia de la modulacion.\"\
+      \"\"\n\n    def __init__(self, fc=128000, samp_rate=320000):  \n        gr.sync_block.__init__(\n\
+      \            self,\n            name='e_RF_VCO_ff',   \n            in_sig=[np.float32,\
+      \ np.float32],\n            out_sig=[np.float32]\n        )\n        self.fc\
+      \ = fc\n        self.samp_rate = samp_rate\n        self.n_m=0\n\n    def work(self,\
+      \ input_items, output_items):\n        A=input_items[0] #se\xF1al de entrada\
+      \ modulada\n        Q=input_items[1] #Descafe se la se\xF1al de salida\n   \
+      \     y=output_items[0]\n        N=len(A)\n        n=np.linspace(self.n_m,self.n_m+N-1,N)\n\
+      \        self.n_m += N\n        y[:]=A*np.cos(2*math.pi*self.fc*n/self.samp_rate+Q)\n\
+      \        return len(y)\n\n\n"
     affinity: ''
     alias: ''
     comment: ''
@@ -1109,7 +1120,7 @@ blocks:
     bus_structure: null
     coordinate: [1248, 340.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: virtual_source_0_0
   id: virtual_source
   parameters:
