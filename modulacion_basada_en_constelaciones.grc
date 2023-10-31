@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '8'
+    value: '16'
   states:
     bus_sink: false
     bus_source: false
@@ -121,7 +121,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: (0.77+0.77j, -0.77+0.77j, -0.77-0.77j, 0.77-0.77j)
+    value: ( 1 ,-1, 1j , -1j , 0.77+0.77j, -0.77+0.77j, -0.77-0.77j, 0.77-0.77j)
   states:
     bus_sink: false
     bus_source: false
@@ -134,7 +134,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '0.2'
+    amp: '.15'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -611,3 +611,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.5.1
