@@ -85,7 +85,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: Rb*sps
+    value: Rs*sps
   states:
     bus_sink: false
     bus_source: false
@@ -97,7 +97,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '[1,1,1,1,1,1,1,1]'
+    value: '[1]*sps'
   states:
     bus_sink: false
     bus_source: false
@@ -109,7 +109,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: len(h)
+    value: '8'
   states:
     bus_sink: false
     bus_source: false
@@ -170,24 +170,7 @@ blocks:
     bus_structure: null
     coordinate: [152, 284.0]
     rotation: 0
-    state: true
-- name: blocks_char_to_float_0_0
-  id: blocks_char_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '1'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [376, 188.0]
-    rotation: 0
-    state: true
+    state: disabled
 - name: blocks_char_to_float_1
   id: blocks_char_to_float
   parameters:
@@ -306,7 +289,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 124.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
@@ -322,7 +305,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: '"blue"'
     color10: '"red"'
@@ -398,7 +381,7 @@ blocks:
     bus_structure: null
     coordinate: [944, 220.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -414,8 +397,8 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
-    average: '1.0'
+    autoscale: 'True'
+    average: '0.05'
     axislabels: 'True'
     bw: Samp_Rate
     color1: '"blue"'
@@ -433,7 +416,7 @@ blocks:
     fc: '0'
     fftsize: '1024'
     freqhalf: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: ''
     label: Relative Gain
     label1: ''
@@ -479,7 +462,7 @@ blocks:
     bus_structure: null
     coordinate: [1152, 212.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -495,7 +478,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -576,7 +559,7 @@ blocks:
     bus_structure: null
     coordinate: [296, 284.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -592,7 +575,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -673,7 +656,7 @@ blocks:
     bus_structure: null
     coordinate: [472, 284.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_1
   id: qtgui_time_sink_x
   parameters:
@@ -689,7 +672,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -770,7 +753,7 @@ blocks:
     bus_structure: null
     coordinate: [736, 220.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_2
   id: qtgui_time_sink_x
   parameters:
@@ -786,7 +769,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -867,7 +850,7 @@ blocks:
     bus_structure: null
     coordinate: [944, 300.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: qtgui_time_sink_x_2_0
   id: qtgui_time_sink_x
   parameters:
@@ -883,7 +866,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -962,20 +945,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 116.0]
+    coordinate: [1136, 116.0]
     rotation: 0
-    state: true
+    state: disabled
 
 connections:
 - [analog_const_source_x_0, '0', epy_block_0, '1']
 - [analog_random_source_x_0, '0', blocks_char_to_float_0, '0']
 - [analog_random_source_x_0, '0', blocks_repack_bits_bb_0, '0']
 - [blocks_char_to_float_0, '0', qtgui_time_sink_x_0, '0']
-- [blocks_char_to_float_0_0, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_char_to_float_1, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_char_to_float_1, '0', qtgui_time_sink_x_0_0, '0']
 - [blocks_multiply_const_vxx_0, '0', epy_block_0, '0']
 - [blocks_multiply_const_vxx_0, '0', qtgui_time_sink_x_1, '0']
-- [blocks_repack_bits_bb_0, '0', blocks_char_to_float_0_0, '0']
 - [blocks_repack_bits_bb_0, '0', blocks_char_to_float_1, '0']
 - [epy_block_0, '0', interp_fir_filter_xxx_0, '0']
 - [epy_block_0, '0', qtgui_const_sink_x_0, '0']
