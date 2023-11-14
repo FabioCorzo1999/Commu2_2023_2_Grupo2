@@ -79,10 +79,10 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.tabla_de_verdad_constelacion = tabla_de_verdad_constelacion = ( 1 ,-1, 1j , -1j , 0.77+0.77j, -0.77+0.77j, -0.77-0.77j, 0.77-0.77j)
+        self.tabla_de_verdad_constelacion = tabla_de_verdad_constelacion = (-3-3j,-1-3j,1-3j,3-3j,3-1j,1-1j,-1-1j,-3-1j,-3+1j,-1+1j,1+1j,3+1j,3+3j,1+3j,-1+3j,-3+3j)
         self.M = M = len(tabla_de_verdad_constelacion )
         self.bps = bps = int(math.log(M,2))
-        self.Sps = Sps = 16
+        self.Sps = Sps = 32//4
         self.Rs = Rs = 32000
         self.samp_rate = samp_rate = Rs*Sps
         self.h = h = [1]*Sps
@@ -230,10 +230,10 @@ class top_block(gr.top_block, Qt.QWidget):
         self.interp_fir_filter_xxx_0.declare_sample_delay(0)
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(tabla_de_verdad_constelacion, 1)
         self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(bps, gr.GR_MSB_FIRST)
-        self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(8)
+        self.blocks_pack_k_bits_bb_0 = blocks.pack_k_bits_bb(16)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 1000))), True)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, .15, 0)
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, .4, 0)
 
 
         ##################################################
