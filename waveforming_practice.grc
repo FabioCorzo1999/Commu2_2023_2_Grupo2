@@ -193,7 +193,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: digital.constellation_8psk().points()
+    value: digital.constellation_16qam().points()
   states:
     bus_sink: false
     bus_source: false
@@ -212,7 +212,7 @@ blocks:
     bus_structure: null
     coordinate: [1232, 116.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: h
   id: variable
   parameters:
@@ -224,7 +224,7 @@ blocks:
     bus_structure: null
     coordinate: [1320, 116.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: h
   id: variable
   parameters:
@@ -234,7 +234,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1464, 116.0]
+    coordinate: [1528, 116.0]
     rotation: 0
     state: disabled
 - name: ntaps
@@ -1473,3 +1473,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.5.1
